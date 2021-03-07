@@ -1,0 +1,15 @@
+import requestAgent from '../lib/request';
+import { ADD_REPOSITORY_SEARCHED } from '../constants/actions'
+
+export const getRepository = (inputValue) =>  (dispatch) => {
+  const url = `https://api.github.com/repos/${inputValue}/forks`;
+
+  requestAgent(url)
+    .then((response) => {
+      dispatch({
+        type: ADD_REPOSITORY_SEARCHED,
+        payload: response.body
+      });
+
+    })
+};

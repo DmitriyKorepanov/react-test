@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { Router  } from 'react-router-dom';
+import {createBrowserHistory} from 'history'
 /* eslint-disable-next-line import/no-extraneous-dependencies */
 import { AppContainer } from 'react-hot-loader'
 
@@ -10,12 +11,13 @@ import { configureStore } from './store/store';
 
 const store = configureStore();
 const mountNode = document.getElementById('react-app');
+const history = createBrowserHistory();
 
 const Application = () => (
     <Provider store={ store }>
-        <BrowserRouter basename='/'>
+        <Router history={ history }>
             <App />
-        </BrowserRouter>
+        </Router>
     </Provider>
 );
 

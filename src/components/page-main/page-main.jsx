@@ -1,16 +1,34 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Search } from "../search/search";
+import cn from "../../utils/cn";
+import { getRepository } from "../../actions/get-repository";
 
-import cn from '../../utils/cn';
+@cn("page-main")
+class PageMain extends React.Component {
+  static propTypes = {
+      getRepository: PropTypes.func.isRequired
+  };
 
-@cn('page-main')
-export default class PageMain extends React.Component {
-    render(cn) {
-        return (
-            <div className={ cn() }>
-                <h1 className={ cn('header') }>
-                    Title
-                </h1>
-            </div>
-        );
-    }
+  render(cn) {
+      const { getRepository, history } = this.props;
+
+      return (
+          <div className={ cn() }>
+              <h1 className={ cn("header") }>Приветсвие!</h1>
+              <Search getRepository={ getRepository } history={ history } />
+          </div>
+      );
+  }
 }
+
+const mapStateToProps = ({ repositorySearched }) => ({
+    repositorySearched
+});
+
+const mapDispatchToProps = {
+    getRepository
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageMain);
