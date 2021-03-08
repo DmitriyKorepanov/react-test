@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import cn from '../../utils/cn';
 import { Search } from "../search/search";
+import { LineItem } from "../line-item/line-item";
 import { getRepository } from "../../actions/get-repository";
 
 @cn('page-search')
@@ -14,11 +15,15 @@ class PageSearch extends React.Component {
 
   render(cn) {
       const {getRepository, repositorySearched} = this.props;
-      console.log('repositorySearched', repositorySearched);
       return (
           <div className={ cn() }>
               <h2 className={ cn('title') }>Результаты поиска</h2>
               <Search getRepository={ getRepository } />
+              <ul>
+                  {repositorySearched.map(item => (
+                      <LineItem item={ item } key={ Math.random() } />
+                  ))}
+              </ul>
           </div>
       );
   }

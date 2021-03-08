@@ -12,7 +12,7 @@ export class Search extends React.Component {
 
     handleSearch = () => {
         const {getRepository,  history} = this.props;
-        const inputValue = document.getElementById('inputFilm').value; // example  'DmitriyKorepanov/react-test';
+        const inputValue = document.getElementById('inputFilm').value; // example  'kubernetes/kubernetes';
         getRepository(inputValue);
         if(window.location.pathname === '/') history.push('search');
     };
