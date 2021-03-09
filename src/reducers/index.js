@@ -1,12 +1,15 @@
 import { combineReducers } from 'redux';
 import {repositorySearched} from "./repository-searched";
+import {repositoryPath} from "./repository-path";
 
 export const  initialState = {
-    repositorySearched: []
+    repositorySearched: [],
+    repositoryPath: ''
 };
 
 const reducers = {
-    repositorySearched
+    repositorySearched,
+    repositoryPath
 };
 
 export default combineReducers(reducers);

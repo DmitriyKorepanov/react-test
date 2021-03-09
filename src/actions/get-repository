@@ -1,15 +1,19 @@
 import requestAgent from '../lib/request';
-import { ADD_REPOSITORY_SEARCHED } from '../constants/actions'
+import { ADD_REPOSITORY_PATH, ADD_REPOSITORY_SEARCHED } from "../constants/actions";
 
-export const getRepository = (inputValue) =>  (dispatch) => {
-  const url = `https://api.github.com/repos/${inputValue}/forks`;
+export const getRepository = (inputValue, page=1) =>  (dispatch) => {
+    const url = `https://api.github.com/repos/${inputValue}/forks?page=${page}`;
 
-  requestAgent(url)
-    .then((response) => {
-      dispatch({
-        type: ADD_REPOSITORY_SEARCHED,
-        payload: response.body
-      });
+    requestAgent(url)
+        .then((response) => {
+            dispatch({
+                type: ADD_REPOSITORY_SEARCHED,
+                payload: response.body
+            });
+            dispatch({
+                type: ADD_REPOSITORY_PATH,
+                payload: inputValue
+            });
 
-    })
+        })
 };
