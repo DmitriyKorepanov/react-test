@@ -20,17 +20,17 @@ class PageSearch extends React.Component {
 
   pagination (num, action, repositoryUrl){
       switch (action){
-          case ('prev'):
+          case 'prev':
               if (num >1) {
                   num -=1;
               }
               break;
-          case ('next'):
+          case 'next':
               if (num) {
                   num +=1;
               }
               break;
-          case (''):
+          case '':
               break;
       }
       this.props.getRepository( repositoryUrl, num);
@@ -44,6 +44,7 @@ class PageSearch extends React.Component {
           <div className={ cn() }>
               <h2 className={ cn('title') }>Результаты поиска  {repositoryPath}</h2>
               <Search getRepository={ getRepository } />
+              { !repositorySearched.length && <h2>результатов нет</h2>}
               <ul>
                   {repositorySearched.map(item => (
                       <LineItem item={ item } key={ Math.random() } />
@@ -57,6 +58,46 @@ class PageSearch extends React.Component {
                   }
                   className={ cn('btn') }
               >Prev
+              </button>
+              <button
+                  type='button'
+                  onClick={
+                      this.pagination.bind(this, 1, 'none', repositoryPath)
+                  }
+                  className={ cn('btn') }
+              >1
+              </button>
+              <button
+                  type='button'
+                  onClick={
+                      this.pagination.bind(this, 2, 'none', repositoryPath)
+                  }
+                  className={ cn('btn') }
+              >2
+              </button>
+              <button
+                  type='button'
+                  onClick={
+                      this.pagination.bind(this, 3, 'none', repositoryPath)
+                  }
+                  className={ cn('btn') }
+              >3
+              </button>
+              <button
+                  type='button'
+                  onClick={
+                      this.pagination.bind(this, 4, 'none', repositoryPath)
+                  }
+                  className={ cn('btn') }
+              >4
+              </button>
+              <button
+                  type='button'
+                  onClick={
+                      this.pagination.bind(this, 5, 'none', repositoryPath)
+                  }
+                  className={ cn('btn') }
+              >5
               </button>
               <button
                   type='button'
