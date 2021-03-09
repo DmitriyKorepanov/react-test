@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 
 import PageMain from '../page-main/page-main';
 import PageSearch from '../page-search/page-search';
-import PageError from '../page-error/page-error';
 import { MAIN_PAGE_ROUTE, SEARCH_PAGE_ROUTE } from '../../constants/routes';
 import './app.pcss';
 
@@ -27,7 +26,7 @@ export default class App extends React.Component {
                     />
                     <Route
                         path='*'
-                        component={ PageError }
+                        component={ PageSearch }
                     />
                 </Switch>
             </div>

@@ -16,4 +16,14 @@ export const getRepository = (inputValue, page=1) =>  (dispatch) => {
             });
 
         })
+        .catch(() => {
+            dispatch({
+                type: ADD_REPOSITORY_SEARCHED,
+                payload: []
+            });
+            dispatch({
+                type: ADD_REPOSITORY_PATH,
+                payload: ''
+            });
+        })
 };

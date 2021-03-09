@@ -19,6 +19,18 @@ class PageSearch extends React.Component {
 
   state = {numberPage: 1};
 
+  componentDidMount() {
+      // download from link /search&page=1?repository=someRepository
+      const path = this.props.location?.pathname;
+      const search = this.props.location?.search;
+      if ( path !== '/search' ) {
+          const page = path.match(/page=[\w]+/g);
+          const url = search.slice(search.lastIndexOf('=') + 1);
+          const numberPage = page && Array.isArray(page) ?  Number(page[0].replace(/\D+/g,"")) : 1;
+          this.props.getRepository( url, numberPage);
+      }
+  }
+
   pagination (num, action, repositoryUrl){
       switch (action){
           case 'prev':
