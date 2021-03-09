@@ -45,7 +45,7 @@ class PageSearch extends React.Component {
           <div className={ cn() }>
               <h2 className={ cn('title') }>Результаты поиска  {repositoryPath}</h2>
               <Search getRepository={ getRepository } />
-              { !repositorySearched.length && <h2>результатов нет</h2>}
+              { !repositorySearched.length && <h3 className={ cn('no-result') }>результатов нет</h3>}
               <ul className={ cn('list') }>
                   {repositorySearched.map(item => (
                       <LineItem item={ item } key={ Math.random() } />
