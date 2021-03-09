@@ -9,7 +9,12 @@
     background-color: #fff;
     box-sizing: border-box;
     border-radius: 4px;
-    padding: 0 5px 0 20px;
+    padding: 0 20px;
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+        height: auto;
+    }
 
     &__name {
         color: #107eff;

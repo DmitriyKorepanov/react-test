@@ -20,7 +20,7 @@ export class Search extends React.Component {
     render(cn) {
         return (
             <form className={ cn('form') } action=''>
-                <input className={ cn('input') } id='inputFilm' type='text' />
+                <input className={ cn('input') } id='inputFilm' type='text' placeholder='owner/:repositoryName' />
                 <button onClick={ this.handleSearch } className={ cn('btn') } type='button'>Найти</button>
             </form>
         );
